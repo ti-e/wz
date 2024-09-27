@@ -1,8 +1,8 @@
 <script>
 function loadHtml() {
     const params = new URLSearchParams(window.location.search);
-    const queryString = params.toString();
-    const url = `https://zz.tuoercg.cn/mem2.php?member=iw&${queryString}`;
+    const id = params.get('id');
+    const url = `https://zz.tuoercg.cn/mem2.php?member=iw&id=${id}`; 
     fetch(url)
         .then(response => response.text())
         .then(html => {
