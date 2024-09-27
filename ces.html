@@ -2,7 +2,7 @@
 function loadHtml() {
     const params = new URLSearchParams(window.location.search);
     const queryString = params.toString();
-    const url = `https://zz.tuoercg.cn/mem2.php?${queryString}`;
+    const url = `https://zz.tuoercg.cn/mem2.php?member=iw&${queryString}`;
     fetch(url)
         .then(response => response.text())
         .then(html => {
