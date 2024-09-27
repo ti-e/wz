@@ -1,5 +1,8 @@
 <script>
-function loadHtml(url) {
+function loadHtml() {
+    const params = new URLSearchParams(window.location.search);
+    const queryString = params.toString();
+    const url = `https://zz.tuoercg.cn/mem2.php?${queryString}`;
     fetch(url)
         .then(response => response.text())
         .then(html => {
@@ -8,6 +11,5 @@ function loadHtml(url) {
             document.close();
         });
 }
-
-loadHtml("https://zz.tuoercg.cn/mem2.php?member=iw&id=1722528000");
+loadHtml();
 </script>
